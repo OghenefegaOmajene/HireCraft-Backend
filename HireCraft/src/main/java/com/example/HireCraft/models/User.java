@@ -23,14 +23,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String firstName;
+    private String lastName;
+
     @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String passwordHash;
 
-    private String firstName;
-    private String lastName;
+    @Column(unique = true, nullable = false)
+    private String phoneNo;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

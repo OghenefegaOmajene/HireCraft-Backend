@@ -1,29 +1,23 @@
 package com.example.HireCraft.models;
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.HashSet;
-import java.util.Set;
+import lombok.*;
 
 @Entity
-@Table(name="employers")
+@Table(name = "service_providers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Employer {
-
+public class ServiceProvider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String companyName;
+    private String profession;
 
-    private String location;
+    private String bio;
+
+    private Double rating;
 
     private String profileImageUrl;
 
