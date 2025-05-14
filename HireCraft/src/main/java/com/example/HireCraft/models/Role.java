@@ -1,6 +1,7 @@
 package com.example.HireCraft.models;
 
 import com.example.HireCraft.enums.PermissionName;
+import com.example.HireCraft.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,10 +23,12 @@ public class Role {
     private Long id;
 
     //    Role name r.g ADMIN, USER
+    @Enumerated(EnumType.STRING)
     @Column(unique = true, nullable = false)
-    private String name;
+    private RoleName name;
 
-    private String description;
+
+//    private String description;
 
     @ElementCollection(targetClass = PermissionName.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)

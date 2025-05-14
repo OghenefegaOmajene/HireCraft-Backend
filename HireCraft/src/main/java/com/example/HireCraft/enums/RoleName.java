@@ -2,6 +2,6 @@ package com.example.HireCraft.enums;
 
 public enum RoleName {
     EMPLOYER,
-    PROVIDER,
+    SERVICE_PROVIDER,
     ADMIN
 }

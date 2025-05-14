@@ -7,11 +7,12 @@ public enum PermissionName {
     UPDATE_USER_ROLE,
 
     //Employer Permissions
-    BOOK_PROVIDER,
+    BOOK_SERVICE_PROVIDER,
     ADD_REVIEW,
     ADD_RATING,
 
     //Provider Permissions
+    VIEW_BOOKING_REQUEST,
     ACCEPT_BOOKING_REQUEST,
     DECLINE_BOOKING_REQUEST,
 
