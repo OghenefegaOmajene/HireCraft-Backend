@@ -2,11 +2,6 @@ package com.example.HireCraft.dtos.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.time.Instant;
 
 @Builder
 public record LoginResponse(

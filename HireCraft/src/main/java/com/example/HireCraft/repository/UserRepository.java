@@ -1,7 +1,7 @@
 package com.example.HireCraft.repository;
 
-import com.example.HireCraft.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import stringcodeltd.com.SecureTasker.models.User;
 
 import java.util.Optional;
 

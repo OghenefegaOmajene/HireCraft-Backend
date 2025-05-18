@@ -28,6 +28,8 @@ public class User {
 
     @Column(unique = true, nullable = false)
     private String email;
+//    User testUser = User.builder().email("a@a.com").build();
+
 
     @Column(nullable = false)
     private String passwordHash;

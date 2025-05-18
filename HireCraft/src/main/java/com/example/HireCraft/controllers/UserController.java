@@ -4,9 +4,18 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import stringcodeltd.com.SecureTasker.dtos.requests.ProfilePatchRequest;
+import stringcodeltd.com.SecureTasker.dtos.requests.UserUpdateRequest;
+import stringcodeltd.com.SecureTasker.dtos.response.UserDetailResponse;
+import stringcodeltd.com.SecureTasker.dtos.response.UserListResponse;
+import stringcodeltd.com.SecureTasker.services.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -62,5 +71,34 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/me")
+    @PreAuthorize("isAuthenticated()")               // ①
+    public ResponseEntity<UserDetailResponse> getMyProfile(
+            @AuthenticationPrincipal UserDetails userDetails) {
+        UserDetailResponse profile = userService.getUserByEmail(userDetails.getUsername());
+        return ResponseEntity.ok(profile);
+    }
+
+
+    @PatchMapping("/profile")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<UserDetailResponse> updateMyProfile(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @Valid @RequestBody ProfilePatchRequest request) {
+        UserDetailResponse updated = userService.updateUserProfile(
+                userDetails.getUsername(), request);
+        return ResponseEntity.ok(updated);
+    }
+
+    @PatchMapping("/profile-picture")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<Map<String,String>> uploadProfilePicture(
+            @AuthenticationPrincipal UserDetails principal,
+            @RequestPart("file") MultipartFile file) {
+
+        String url = userService.updateProfilePicture(principal.getUsername(), file);
+        return ResponseEntity.ok(Map.of("profilePictureUrl", url));
     }
 }
