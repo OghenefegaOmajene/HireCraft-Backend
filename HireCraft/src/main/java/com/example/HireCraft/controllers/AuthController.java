@@ -17,14 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import stringcodeltd.com.SecureTasker.dtos.requests.LoginRequest;
-//import stringcodeltd.com.SecureTasker.dtos.requests.RegisterRequest;
-//import stringcodeltd.com.SecureTasker.dtos.requests.ResetPasswordRequest;
-//import stringcodeltd.com.SecureTasker.dtos.response.ForgotPasswordResponse;
-//import stringcodeltd.com.SecureTasker.dtos.response.LoginResponse;
-//import stringcodeltd.com.SecureTasker.dtos.response.RegisterResponse;
-//import stringcodeltd.com.SecureTasker.dtos.response.ResetPasswordResponse;
-//import stringcodeltd.com.SecureTasker.services.AuthService;
 
 @RestController
 @RequestMapping("/api/v1/auth")
